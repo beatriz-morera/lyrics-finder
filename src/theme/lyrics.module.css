@@ -1,0 +1,41 @@
+.lyrics_page {
+  box-sizing: border-box;
+  margin-top: -10px;
+  padding: 20px 10px;
+  color: white;
+  width: 100vw;
+  min-height: 850px;
+  max-height: auto;
+  background-image: url('../assets/lyric-larger.jpg');
+  text-align: center;
+  letter-spacing: 1.5px;
+  line-height: 20px;
+  font-size: 15px;
+}
+.lyrics_page_toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.lyrics_page_lyrics_container {
+  margin-top: -52px;
+  padding: 0 10px;
+}
+.lyrics_page_artist {
+  margin-top: -5px;
+  color: var(--ion-color-light-shade);
+}
+.lyrics_page_lyrics {
+  white-space: pre-line;
+}
+.lyrics_page_not_found_container {
+  margin: 30px;
+}
+.lyrics_page_not_found_title {
+  margin-top: 100px;
+  font-size: 50px;
+}
+.lyrics_page_not_found_subtitle {
+  font-size: 20px;
+}

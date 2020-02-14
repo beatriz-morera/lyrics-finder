@@ -1,0 +1,30 @@
+.myList_page {
+  box-sizing: border-box;
+  margin-top: -10px;
+  padding: 20px 0;
+  width: 100vw;
+  min-height: 850px;
+  max-height: auto;
+  background-image: url('../assets/lyric-myList.jpg');
+  text-align: center;
+  color: white;
+}
+.myList_page_title {
+  margin-top: 100px;
+}
+.myList_page_cards_container {
+  margin-top: 50px;
+}
+
+.myList_page_cards_label {
+  text-align: start;
+  margin-left: 15px;
+}
+.myList_page_empty {
+  margin-top: 70px;
+  padding: 30px;
+  font-size: 20px;
+  line-height: 35px;
+  letter-spacing: 2px;
+  color: var(--ion-color-medium);
+}

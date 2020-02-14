@@ -1,0 +1,35 @@
+.home_page {
+  box-sizing: border-box;
+  margin-top: -20px;
+  padding: 40px;
+  width: 100vw;
+  height: 850px;
+  background-image: url('../assets/lyric.jpg');
+  text-align: center;
+}
+.home_page_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Redressed', cursive;
+  margin-top: 90px;
+  color: white;
+  font-size: 70px;
+  margin-bottom: -50px;
+}
+.home_page_input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  border-radius: 12px;
+  padding: 19px 25px;
+  margin-bottom: 20px;
+}
+
+.home_page_icon_label {
+  color: white;
+  margin-top: -5px;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}

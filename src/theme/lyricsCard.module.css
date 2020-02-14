@@ -1,0 +1,16 @@
+.lyrics_card_music_icon_background {
+  width: 70px;
+  height: 100%;
+  background-color: #111111;
+  text-align: center;
+}
+.lyrics_card_info_container {
+  padding: 0 0 5px;
+  font-size: 14px;
+  margin-left: 15px;
+}
+.lyrics_card_info_artist {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  margin-top: -5px;
+}
