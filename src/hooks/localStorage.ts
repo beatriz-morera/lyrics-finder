@@ -30,9 +30,11 @@ export function useSavedLyrics(): [LyricsInfo[], Dispatch<LyricsInfo>, Dispatch<
   );
 
   const removeLyrics = useCallback(
-    ({ song }: LyricsInfo) =>
+    ({ song, artist }: LyricsInfo) =>
       setSavedLyrics((items: LyricsInfo[]) => {
-        const newValues = items.filter((lyricsInfo: LyricsInfo) => lyricsInfo.song !== song);
+        const newValues = items.filter(
+          lyricsInfo => lyricsInfo.artist !== artist && lyricsInfo.song !== song
+        );
         setLocalLyrics(newValues);
         return newValues;
       }),

@@ -10,11 +10,7 @@ import { IonContent, IonPage, IonButtons, IonBackButton, IonButton } from '@ioni
 import classes from '../theme/myList.module.css';
 
 const MyList: React.FC = () => {
-  const [savedLyrics] = useSavedLyrics();
-
-  /*const removeLyricsHandler = index => {
-    return savedLyrics.splice(index, 1);
-  };*/
+  const [savedLyrics, , removeLyrics] = useSavedLyrics();
 
   return (
     <IonPage>
@@ -33,7 +29,7 @@ const MyList: React.FC = () => {
             <div className={classes.myList_page_cards_container}>
               <p className={classes.myList_page_cards_label}>You added</p>
               {savedLyrics.map((lyricsInfo, index) => (
-                <LyricsCard song={lyricsInfo.song} artist={lyricsInfo.artist} key={index} />
+                <LyricsCard lyricsInfo={lyricsInfo} key={index} onRemove={removeLyrics} />
               ))}
             </div>
           ) : (

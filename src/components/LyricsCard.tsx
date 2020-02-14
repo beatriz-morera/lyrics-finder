@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { Dispatch, useCallback } from 'react';
 
 import { IonIcon, IonItem, IonCard } from '@ionic/react';
 import { musicalNotes, trash } from 'ionicons/icons';
 
 import classes from '../theme/lyricsCard.module.css';
 import { Link } from 'react-router-dom';
+import { LyricsInfo } from '../models/lyricsInfo';
 
 interface LyricsCardProps {
-  song: string;
-  artist: string;
+  lyricsInfo: LyricsInfo;
+  onRemove?: Dispatch<LyricsInfo>;
 }
 
-const LyricsCard: React.FC<LyricsCardProps> = ({ song, artist }) => {
+const LyricsCard: React.FC<LyricsCardProps> = ({ lyricsInfo, onRemove }) => {
+  const { artist, song } = lyricsInfo;
+  const removeHandler = useCallback(
+    ev => {
+      ev.preventDefault();
+      onRemove && onRemove(lyricsInfo);
+    },
+    [lyricsInfo, onRemove]
+  );
   return (
     <Link to={`/lyrics/${artist}/${song}`} style={{ textDecoration: 'none' }}>
       <IonCard>
@@ -28,7 +37,7 @@ const LyricsCard: React.FC<LyricsCardProps> = ({ song, artist }) => {
             <p>{song}</p>
             <p className={classes.lyrics_card_info_artist}>{artist}</p>
           </div>
-          <IonIcon icon={trash} slot="end" color="medium" />
+          <IonIcon icon={trash} slot="end" color="medium" onClick={removeHandler} />
         </IonItem>
       </IonCard>
     </Link>

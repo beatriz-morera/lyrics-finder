@@ -3,7 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { findLyrics } from '../services/lyrics';
 import { useSavedLyrics } from '../hooks/localStorage';
 
-import { IonContent, IonPage, IonButtons, IonBackButton, IonIcon, IonLoading } from '@ionic/react';
+import {
+  IonContent,
+  IonPage,
+  IonButtons,
+  IonBackButton,
+  IonIcon,
+  IonLoading,
+  IonToast
+} from '@ionic/react';
 import { useParams } from 'react-router-dom';
 
 import { add, checkmark } from 'ionicons/icons';
@@ -12,14 +20,18 @@ import classes from '../theme/lyrics.module.css';
 
 const Lyrics: React.FC = () => {
   const { artist, song } = useParams();
-
   const [lyrics, setLyrics] = useState<string>('');
+  const [savedLyrics, addLyrics, removeLyrics] = useSavedLyrics();
 
   useEffect(() => {
-    findLyrics(artist, song).then(setLyrics);
-  }, [artist, song]);
+    const saved = savedLyrics.find(x => x.artist === artist && x.song === song);
+    if (saved) {
+      setLyrics(saved.lyrics);
+    } else {
+      findLyrics(artist, song).then(setLyrics);
+    }
+  }, [artist, song, savedLyrics]);
 
-  const [savedLyrics, addLyrics, removeLyrics] = useSavedLyrics();
   const saved = savedLyrics.some(item => item.song === song);
 
   const [showNotFound, setShowNotFound] = useState(false);
@@ -67,6 +79,8 @@ const Lyrics: React.FC = () => {
               </div>
             )
           )}
+          <IonToast isOpen={saved} message="Added to My List." duration={500} />
+          <IonToast isOpen={!saved} message="Removed from My List." duration={500} />
         </section>
       </IonContent>
     </IonPage>
