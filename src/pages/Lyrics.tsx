@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import { findLyrics } from '../services/lyrics';
+import { useSavedLyrics } from '../hooks/localStorage';
 
-import { IonContent, IonPage, IonButtons, IonBackButton, IonIcon } from '@ionic/react';
+import { IonContent, IonPage, IonButtons, IonBackButton, IonIcon, IonLoading } from '@ionic/react';
 import { useParams } from 'react-router-dom';
 
 import { add, checkmark } from 'ionicons/icons';
@@ -10,7 +11,7 @@ import { add, checkmark } from 'ionicons/icons';
 import classes from '../theme/lyrics.module.css';
 
 const Lyrics: React.FC = () => {
-  const { artist, song } = useParams<any>();
+  const { artist, song } = useParams();
 
   const [lyrics, setLyrics] = useState<string>('');
 
@@ -18,8 +19,14 @@ const Lyrics: React.FC = () => {
     findLyrics(artist, song).then(setLyrics);
   }, [artist, song]);
 
-  const [saved, setSaved] = useState(false);
-  const savedHandler = () => setSaved(!saved);
+  const [savedLyrics, addLyrics, removeLyrics] = useSavedLyrics();
+  const saved = savedLyrics.some(item => item.song === song);
+
+  const [showNotFound, setShowNotFound] = useState(false);
+
+  setTimeout(() => {
+    setShowNotFound(true);
+  }, 2000);
 
   return (
     <IonPage>
@@ -27,31 +34,38 @@ const Lyrics: React.FC = () => {
         <section className={classes.lyrics_page}>
           <div className={classes.lyrics_page_toolbar}>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/" text="" style={{ color: 'white' }} />
+              <IonBackButton defaultHref="/" text="" style={{ color: 'white' }} mode="ios" />
             </IonButtons>
             {lyrics ? (
               <IonButtons slot="end">
                 <IonIcon
                   style={{ fontSize: '30px' }}
                   icon={saved ? checkmark : add}
-                  onClick={savedHandler}
+                  onClick={() =>
+                    saved
+                      ? removeLyrics({ artist, song, lyrics })
+                      : addLyrics({ artist, song, lyrics })
+                  }
                   mode="md"
                 />
               </IonButtons>
             ) : null}
           </div>
+          <IonLoading isOpen={!lyrics && !showNotFound} message="Loading..." />
           {lyrics ? (
             <div className={classes.lyrics_page_lyrics_container}>
-              <h3>{song.toUpperCase()}</h3>
-              <h5 className={classes.lyrics_page_artist}>...Song by {artist.toUpperCase()}...</h5>
+              <h4 className={classes.lyrics_page_song}>{song}</h4>
+              <h5 className={classes.lyrics_page_artist}>...Song by {artist}...</h5>
               <p className={classes.lyrics_page_lyrics}>{lyrics}</p>
             </div>
           ) : (
-            <div className={classes.lyrics_page_not_found_container}>
-              <p className={classes.lyrics_page_not_found_title}>Oops!</p>
-              <p className={classes.lyrics_page_not_found_subtitle}>No results found</p>
-              <p>Please check you have the right spelling, or try different keywords.</p>
-            </div>
+            showNotFound && (
+              <div className={classes.lyrics_page_not_found_container}>
+                <p className={classes.lyrics_page_not_found_title}>Oops!</p>
+                <p className={classes.lyrics_page_not_found_subtitle}>No results found</p>
+                <p>Please check you have the right spelling, or try different keywords.</p>
+              </div>
+            )
           )}
         </section>
       </IonContent>

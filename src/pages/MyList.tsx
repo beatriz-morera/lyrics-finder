@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import LyricsCard from '../components/LyricsCard';
+import { useSavedLyrics } from '../hooks/localStorage';
 
 import { IonContent, IonPage, IonButtons, IonBackButton, IonButton } from '@ionic/react';
 
 import classes from '../theme/myList.module.css';
 
 const MyList: React.FC = () => {
-  const { artist, song } = useParams<any>();
-  const [savedLyrics, setsavedLyrics] = useState<string[]>([]);
+  const [savedLyrics] = useSavedLyrics();
+
+  /*const removeLyricsHandler = index => {
+    return savedLyrics.splice(index, 1);
+  };*/
 
   return (
     <IonPage>
@@ -28,7 +32,9 @@ const MyList: React.FC = () => {
           {savedLyrics.length ? (
             <div className={classes.myList_page_cards_container}>
               <p className={classes.myList_page_cards_label}>You added</p>
-              <LyricsCard song={song} artist={artist} />
+              {savedLyrics.map((lyricsInfo, index) => (
+                <LyricsCard song={lyricsInfo.song} artist={lyricsInfo.artist} key={index} />
+              ))}
             </div>
           ) : (
             <p className={classes.myList_page_empty}>

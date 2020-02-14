@@ -1,7 +1,7 @@
 .lyrics_page {
   box-sizing: border-box;
   margin-top: -10px;
-  padding: 20px 10px;
+  padding: 25px 10px;
   color: white;
   width: 100vw;
   min-height: 850px;
@@ -19,15 +19,20 @@
   align-items: center;
 }
 .lyrics_page_lyrics_container {
-  margin-top: -52px;
+  margin-top: -42px;
   padding: 0 10px;
 }
+.lyrics_page_song {
+  padding: 0 35px;
+  font-size: 18px;
+}
 .lyrics_page_artist {
-  margin-top: -5px;
+  margin-top: 5px;
   color: var(--ion-color-light-shade);
 }
 .lyrics_page_lyrics {
   white-space: pre-line;
+  padding-top: 20px;
 }
 .lyrics_page_not_found_container {
   margin: 30px;
