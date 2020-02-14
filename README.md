@@ -1,6 +1,6 @@
 # lyrics-finder
 
-Ionic shows explorer app
+Ionic lyrics finder app
 
 **pages**
 
