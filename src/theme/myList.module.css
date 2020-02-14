@@ -9,6 +9,11 @@
   text-align: center;
   color: white;
 }
+.myList_page_searbar_container {
+  width: 200px;
+  float: right;
+  margin-top: -55px;
+}
 .myList_page_title {
   margin-top: 80px;
 }

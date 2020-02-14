@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom';
 import LyricsCard from '../components/LyricsCard';
 import { useSavedLyrics } from '../hooks/localStorage';
 
-import { IonContent, IonPage, IonButtons, IonBackButton, IonButton } from '@ionic/react';
+import {
+  IonContent,
+  IonPage,
+  IonButtons,
+  IonBackButton,
+  IonButton,
+  IonSearchbar
+} from '@ionic/react';
 
 import classes from '../theme/myList.module.css';
 
@@ -19,6 +26,15 @@ const MyList: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" text="" style={{ color: 'white' }} mode="md" />
           </IonButtons>
+          <div className={classes.myList_page_searbar_container}>
+            <IonSearchbar
+              color="dark"
+              mode="ios"
+              autocomplete="on"
+              animated
+              placeholder="Find in my list"
+            />
+          </div>
           <h2 className={classes.myList_page_title}>My List</h2>
           <Link to="/home">
             <IonButton fill="outline" shape="round" color="light" mode="ios">
