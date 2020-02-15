@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -18,20 +18,22 @@ import classes from '../theme/myList.module.css';
 
 const MyList: React.FC = () => {
   const [savedLyrics, , removeLyrics] = useSavedLyrics();
+  const [text, setText] = useState('');
 
-  const [filtered, setFiltered] = useState(savedLyrics);
+  const [filtered, setFiltered] = useState([]);
 
-  const filterLyrics = useCallback(
-    ev => {
-      const text = ev.target.value.trim().toLowerCase();
-      setFiltered(
-        savedLyrics.filter(
-          item => item.artist.toLowerCase().includes(text) || item.song.toLowerCase().includes(text)
-        )
-      );
-    },
-    [savedLyrics]
-  );
+  useEffect(() => {
+    setFiltered(
+      savedLyrics.filter(
+        item => item.artist.toLowerCase().includes(text) || item.song.toLowerCase().includes(text)
+      )
+    );
+  }, [savedLyrics, text]);
+
+  const filterLyrics = useCallback(ev => {
+    const text = ev.target.value.trim().toLowerCase();
+    setText(text);
+  }, []);
 
   return (
     <IonPage>

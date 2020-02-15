@@ -20,25 +20,26 @@ import classes from '../theme/lyrics.module.css';
 
 const Lyrics: React.FC = () => {
   const { artist, song } = useParams();
-  const [lyrics, setLyrics] = useState<string>('');
+  const [lyrics, setLyrics] = useState<string>(null);
+  const [showNotFound, setShowNotFound] = useState(false);
   const [savedLyrics, addLyrics, removeLyrics] = useSavedLyrics();
 
   useEffect(() => {
-    const saved = savedLyrics.find(x => x.artist === artist && x.song === song);
-    if (saved) {
-      setLyrics(saved.lyrics);
+    if (artist && song) {
+      const saved = savedLyrics.find(x => x.artist === artist && x.song === song);
+      if (saved) {
+        setLyrics(saved.lyrics);
+      } else {
+        findLyrics(artist, song)
+          .then(setLyrics)
+          .catch(() => setShowNotFound(true));
+      }
     } else {
-      findLyrics(artist, song).then(setLyrics);
+      setLyrics(null);
     }
   }, [artist, song, savedLyrics]);
 
   const saved = savedLyrics.some(item => item.song === song);
-
-  const [showNotFound, setShowNotFound] = useState(false);
-
-  setTimeout(() => {
-    setShowNotFound(true);
-  }, 2000);
 
   return (
     <IonPage>

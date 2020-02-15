@@ -33,7 +33,7 @@ export function useSavedLyrics(): [LyricsInfo[], Dispatch<LyricsInfo>, Dispatch<
     ({ song, artist }: LyricsInfo) =>
       setSavedLyrics((items: LyricsInfo[]) => {
         const newValues = items.filter(
-          lyricsInfo => lyricsInfo.artist !== artist && lyricsInfo.song !== song
+          lyricsInfo => lyricsInfo.artist !== artist || lyricsInfo.song !== song
         );
         setLocalLyrics(newValues);
         return newValues;

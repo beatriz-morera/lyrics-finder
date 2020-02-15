@@ -29,10 +29,10 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route path="/lyrics/:artist/:song" component={Lyrics} exact={true} />
+        <Route path="/home" component={Home} exact />
+        <Route path="/lyrics/:artist/:song" component={Lyrics} exact />
         <Route path="/myList" component={MyList} />
-        <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
+        <Route path="/" render={() => <Redirect to="/home" />} exact />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
