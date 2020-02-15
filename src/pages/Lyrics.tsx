@@ -21,7 +21,7 @@ import classes from '../theme/lyrics.module.css';
 const Lyrics: React.FC = () => {
   const { artist, song } = useParams();
   const [lyrics, setLyrics] = useState<string>(null);
-  const [showNotFound, setShowNotFound] = useState(false);
+  const [error, setError] = useState(false);
   const [savedLyrics, addLyrics, removeLyrics] = useSavedLyrics();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Lyrics: React.FC = () => {
       } else {
         findLyrics(artist, song)
           .then(setLyrics)
-          .catch(() => setShowNotFound(true));
+          .catch(err => setError(err.message || 'Unknow error'));
       }
     } else {
       setLyrics(null);
@@ -64,7 +64,7 @@ const Lyrics: React.FC = () => {
               </IonButtons>
             ) : null}
           </div>
-          <IonLoading isOpen={!lyrics && !showNotFound} message="Loading..." />
+          <IonLoading isOpen={!lyrics && !error} message="Loading..." />
           {lyrics ? (
             <div className={classes.lyrics_page_lyrics_container}>
               <h4 className={classes.lyrics_page_song}>{song}</h4>
@@ -72,10 +72,10 @@ const Lyrics: React.FC = () => {
               <p className={classes.lyrics_page_lyrics}>{lyrics}</p>
             </div>
           ) : (
-            showNotFound && (
+            error && (
               <div className={classes.lyrics_page_not_found_container}>
                 <p className={classes.lyrics_page_not_found_title}>Oops!</p>
-                <p className={classes.lyrics_page_not_found_subtitle}>No results found</p>
+                <p className={classes.lyrics_page_not_found_subtitle}>{error}</p>
                 <p>Please check you have the right spelling, or try different keywords.</p>
               </div>
             )
