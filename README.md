@@ -5,15 +5,15 @@ Ionic lyrics finder app
 **pages**
 
 - [x] home page
-- [x] details page
-- [x] favorites page
+- [x] lyrics page
+- [x] myList page
 
 **features**
 
 - [x] ionic components
 - [x] typescript
 - [x] react hooks
-- [ ] local storage
+- [x] local storage
 
 ## Available Scripts
 

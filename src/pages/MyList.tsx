@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -19,6 +19,20 @@ import classes from '../theme/myList.module.css';
 const MyList: React.FC = () => {
   const [savedLyrics, , removeLyrics] = useSavedLyrics();
 
+  const [filtered, setFiltered] = useState(savedLyrics);
+
+  const filterLyrics = useCallback(
+    ev => {
+      const text = ev.target.value.trim().toLowerCase();
+      setFiltered(
+        savedLyrics.filter(
+          item => item.artist.toLowerCase().includes(text) || item.song.toLowerCase().includes(text)
+        )
+      );
+    },
+    [savedLyrics]
+  );
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -33,6 +47,7 @@ const MyList: React.FC = () => {
               autocomplete="on"
               animated
               placeholder="Find in my list"
+              onIonChange={filterLyrics}
             />
           </div>
           <h2 className={classes.myList_page_title}>My List</h2>
@@ -41,16 +56,16 @@ const MyList: React.FC = () => {
               Add Lyrics
             </IonButton>
           </Link>
-          {savedLyrics.length ? (
+          {filtered.length ? (
             <div className={classes.myList_page_cards_container}>
               <p className={classes.myList_page_cards_label}>You added</p>
-              {savedLyrics.map((lyricsInfo, index) => (
+              {filtered.map((lyricsInfo, index) => (
                 <LyricsCard lyricsInfo={lyricsInfo} key={index} onRemove={removeLyrics} />
               ))}
             </div>
           ) : (
             <p className={classes.myList_page_empty}>
-              Start adding lyrics to your list so you can easily find them later.
+              Add lyrics to your list so you can easily find them later.
             </p>
           )}
         </section>

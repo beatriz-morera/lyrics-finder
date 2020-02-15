@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { IonContent, IonPage, IonIcon, IonButton } from '@ionic/react';
 import { musicalNote, checkmark } from 'ionicons/icons';
 
@@ -23,8 +23,16 @@ const Home: React.FC = () => {
     setSong(ev.target.value);
   };
 
+  const titleCase = useCallback(str => {
+    let words = str.toLowerCase().split(' ');
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+    }
+    return words.join(' ');
+  }, []);
+
   const findHandler = () => {
-    history.push(`/lyrics/${artist}/${song}`);
+    history.push(`/lyrics/${titleCase(artist)}/${titleCase(song)}`);
   };
 
   return (
