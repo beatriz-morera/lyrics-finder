@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { findLyrics } from '../services/lyrics';
+import { titleCase } from '../services/titleCase';
 import { useSavedLyrics } from '../hooks/localStorage';
 
 import {
@@ -67,8 +68,8 @@ const Lyrics: React.FC = () => {
           <IonLoading isOpen={!lyrics && !error} message="Loading..." />
           {lyrics ? (
             <div className={classes.lyrics_page_lyrics_container}>
-              <h4 className={classes.lyrics_page_song}>{song}</h4>
-              <h5 className={classes.lyrics_page_artist}>...Song by {artist}...</h5>
+              <h4 className={classes.lyrics_page_song}>{titleCase(song)}</h4>
+              <h5 className={classes.lyrics_page_artist}>...Song by {titleCase(artist)}...</h5>
               <p className={classes.lyrics_page_lyrics}>{lyrics}</p>
             </div>
           ) : (

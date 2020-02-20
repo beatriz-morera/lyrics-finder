@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactHashRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Lyrics from './pages/Lyrics';
 import MyList from './pages/MyList';
@@ -27,14 +27,14 @@ import './theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactHashRouter>
       <IonRouterOutlet>
         <Route path="/home" component={Home} exact />
         <Route path="/lyrics/:artist/:song" component={Lyrics} exact />
         <Route path="/myList" component={MyList} />
         <Route path="/" render={() => <Redirect to="/home" />} exact />
       </IonRouterOutlet>
-    </IonReactRouter>
+    </IonReactHashRouter>
   </IonApp>
 );
 

@@ -6,6 +6,7 @@ import { musicalNotes, trash } from 'ionicons/icons';
 import classes from '../theme/lyricsCard.module.css';
 import { Link } from 'react-router-dom';
 import { LyricsInfo } from '../models/lyricsInfo';
+import { titleCase } from '../services/titleCase';
 
 interface LyricsCardProps {
   lyricsInfo: LyricsInfo;
@@ -34,8 +35,8 @@ const LyricsCard: React.FC<LyricsCardProps> = ({ lyricsInfo, onRemove }) => {
           </div>
 
           <div className={classes.lyrics_card_info_container}>
-            <p>{song}</p>
-            <p className={classes.lyrics_card_info_artist}>{artist}</p>
+            <p>{titleCase(song)}</p>
+            <p className={classes.lyrics_card_info_artist}>{titleCase(artist)}</p>
           </div>
           <IonIcon icon={trash} slot="end" color="medium" onClick={removeHandler} />
         </IonItem>
