@@ -15,6 +15,12 @@ Ionic lyrics finder app
 - [x] react hooks
 - [x] local storage
 
+## Demo Page
+
+You can check the project running at:
+[https://songs-lyrics-finder.netlify.com/](https://songs-lyrics-finder.netlify.com/)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
