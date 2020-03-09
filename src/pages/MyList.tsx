@@ -38,35 +38,34 @@ const MyList: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <section className={classes.myList_page}>
+        <section className={classes.page}>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" text="" style={{ color: 'white' }} mode="md" />
           </IonButtons>
-          <div className={classes.myList_page_searbar_container}>
+          <div className={classes.searchbarContainer}>
             <IonSearchbar
               color="dark"
               mode="ios"
-              autocomplete="on"
               animated
               placeholder="Find in my list"
               onIonChange={filterLyrics}
             />
           </div>
-          <h2 className={classes.myList_page_title}>My List</h2>
+          <h2 className={classes.title}>My List</h2>
           <Link to="/home">
             <IonButton fill="outline" shape="round" color="light" mode="ios">
               Add Lyrics
             </IonButton>
           </Link>
           {filtered.length ? (
-            <div className={classes.myList_page_cards_container}>
-              <p className={classes.myList_page_cards_label}>You added</p>
+            <div className={classes.cardsContainer}>
+              <p className={classes.cardsLabel}>You added</p>
               {filtered.map((lyricsInfo, index) => (
                 <LyricsCard lyricsInfo={lyricsInfo} key={index} onRemove={removeLyrics} />
               ))}
             </div>
           ) : (
-            <p className={classes.myList_page_empty}>
+            <p className={classes.empty}>
               Add lyrics to your list so you can easily find them later.
             </p>
           )}

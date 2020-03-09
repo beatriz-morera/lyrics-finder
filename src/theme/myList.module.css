@@ -1,35 +1,35 @@
-.myList_page {
+.page {
   box-sizing: border-box;
   margin-top: -10px;
   padding: 20px 0;
   width: 100vw;
   min-height: 850px;
   max-height: auto;
-  background-image: url('../assets/lyric-larger-myList.jpg');
+  background: linear-gradient(115deg, rgb(48, 4, 119), rgb(168, 23, 132));
   text-align: center;
   color: white;
 }
-.myList_page_searbar_container {
+.searchbarContainer {
   width: 200px;
   float: right;
   margin-top: -55px;
 }
-.myList_page_title {
+.title {
   margin-top: 80px;
 }
-.myList_page_cards_container {
+.cardsContainer {
   margin-top: 50px;
 }
 
-.myList_page_cards_label {
+.cardsLabel {
   text-align: start;
   margin-left: 15px;
 }
-.myList_page_empty {
+.empty {
   margin-top: 70px;
   padding: 35px;
   font-size: 20px;
   line-height: 35px;
   letter-spacing: 2px;
-  color: var(--ion-color-medium);
+  color: rgb(214, 214, 214);
 }

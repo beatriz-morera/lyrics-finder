@@ -25,20 +25,20 @@ const LyricsCard: React.FC<LyricsCardProps> = ({ lyricsInfo, onRemove }) => {
   return (
     <Link to={`/lyrics/${artist}/${song}`} style={{ textDecoration: 'none' }}>
       <IonCard>
-        <IonItem color="dark" style={{ marginLeft: '-17px', marginBottom: '-2px' }}>
-          <div className={classes.lyrics_card_music_icon_background}>
+        <IonItem style={{ marginLeft: '-17px', marginBottom: '-2px' }}>
+          <div className={classes.musicIconBackground}>
             <IonIcon
               icon={musicalNotes}
               slot="start"
-              style={{ fontSize: '50px', paddingTop: '10px', fill: 'purple' }}
+              style={{ fontSize: '50px', paddingTop: '10px', fill: 'rgb(168, 23, 132)' }}
             />
           </div>
 
-          <div className={classes.lyrics_card_info_container}>
-            <p>{titleCase(song)}</p>
-            <p className={classes.lyrics_card_info_artist}>{titleCase(artist)}</p>
+          <div className={classes.container}>
+            <p className={classes.song}>{titleCase(song)}</p>
+            <p className={classes.artist}>{titleCase(artist)}</p>
           </div>
-          <IonIcon icon={trash} slot="end" color="medium" onClick={removeHandler} />
+          <IonIcon icon={trash} slot="end" color="dark" onClick={removeHandler} />
         </IonItem>
       </IonCard>
     </Link>

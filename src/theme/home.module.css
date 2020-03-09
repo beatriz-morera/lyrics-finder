@@ -1,13 +1,13 @@
-.home_page {
+.page {
   box-sizing: border-box;
   margin-top: -20px;
   padding: 40px;
   width: 100vw;
   height: 850px;
-  background-image: url('../assets/lyric.jpg');
+  background: linear-gradient(115deg, rgb(48, 4, 119), rgb(168, 23, 132));
   text-align: center;
 }
-.home_page_title {
+.title {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -18,7 +18,7 @@
   font-size: 70px;
   margin-bottom: -50px;
 }
-.home_page_input {
+.input {
   width: 100%;
   border: 0;
   outline: none;
@@ -27,7 +27,7 @@
   margin-bottom: 20px;
 }
 
-.home_page_icon_label {
+.iconLabel {
   color: white;
   margin-top: -5px;
   font-size: 15px;

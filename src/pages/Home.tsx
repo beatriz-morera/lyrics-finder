@@ -30,24 +30,19 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <section className={classes.home_page}>
-          <div className={classes.home_page_title}>
+        <section className={classes.page}>
+          <div className={classes.title}>
             <IonIcon icon={musicalNote} style={{ fill: 'white', fontSize: '60px' }} />
             <p>Lyrics</p>
             <IonIcon icon={musicalNote} style={{ fill: 'white', fontSize: '60px' }} />
           </div>
           <input
             placeholder="Artist"
-            className={classes.home_page_input}
+            className={classes.input}
             onChange={artistHandler}
             value={artist}
           />
-          <input
-            placeholder="Song"
-            className={classes.home_page_input}
-            onChange={songHandler}
-            value={song}
-          />
+          <input placeholder="Song" className={classes.input} onChange={songHandler} value={song} />
 
           <IonButton
             mode="ios"
@@ -67,7 +62,7 @@ const Home: React.FC = () => {
               icon={checkmark}
               style={{ fill: 'white', fontSize: '40px', marginTop: '15px' }}
             />
-            <p className={classes.home_page_icon_label}>My List</p>
+            <p className={classes.iconLabel}>My List</p>
           </Link>
         </section>
       </IonContent>

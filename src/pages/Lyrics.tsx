@@ -45,8 +45,8 @@ const Lyrics: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <section className={classes.lyrics_page}>
-          <div className={classes.lyrics_page_toolbar}>
+        <section className={classes.page}>
+          <div className={classes.toolbar}>
             <IonButtons slot="start">
               <IonBackButton defaultHref="/" text="" style={{ color: 'white' }} mode="ios" />
             </IonButtons>
@@ -67,16 +67,16 @@ const Lyrics: React.FC = () => {
           </div>
           <IonLoading isOpen={!lyrics && !error} message="Loading..." />
           {lyrics ? (
-            <div className={classes.lyrics_page_lyrics_container}>
-              <h4 className={classes.lyrics_page_song}>{titleCase(song)}</h4>
-              <h5 className={classes.lyrics_page_artist}>...Song by {titleCase(artist)}...</h5>
-              <p className={classes.lyrics_page_lyrics}>{lyrics}</p>
+            <div className={classes.lyricsContainer}>
+              <h4 className={classes.song}>{titleCase(song)}</h4>
+              <h5 className={classes.artist}>...Song by {titleCase(artist)}...</h5>
+              <p className={classes.lyrics}>{lyrics}</p>
             </div>
           ) : (
             error && (
-              <div className={classes.lyrics_page_not_found_container}>
-                <p className={classes.lyrics_page_not_found_title}>Oops!</p>
-                <p className={classes.lyrics_page_not_found_subtitle}>{error}</p>
+              <div className={classes.notFoundContainer}>
+                <p className={classes.notFoundTitle}>Oops!</p>
+                <p className={classes.notFoundSubtitle}>{error}</p>
                 <p>Please check you have the right spelling, or try different keywords.</p>
               </div>
             )

@@ -1,15 +1,19 @@
-.lyrics_card_music_icon_background {
+.musicIconBackground {
   width: 70px;
   height: 100%;
   background-color: #111111;
   text-align: center;
 }
-.lyrics_card_info_container {
+.container {
   padding: 0 0 3px;
   font-size: 14px;
   margin-left: 15px;
 }
-.lyrics_card_info_artist {
-  color: var(--ion-color-medium);
+.artist {
   margin-top: -7px;
+}
+.song {
+  font-weight: 600;
+  letter-spacing: 1;
+  font-size: 15px;
 }
