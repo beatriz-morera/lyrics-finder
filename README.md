@@ -20,6 +20,7 @@ Ionic lyrics finder app
 You can check the project running at:
 [https://songs-lyrics-finder.netlify.com/](https://songs-lyrics-finder.netlify.com/)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5d6ec49d-e418-4030-aae8-4bfb829376f1/deploy-status)](https://app.netlify.com/sites/songs-lyrics-finder/deploys)
 
 ## Available Scripts
 
