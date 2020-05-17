@@ -1,6 +1,6 @@
-# lyrics-finder
+# Lyrics
 
-Ionic lyrics finder app
+Ionic lyrics finder Web App **Mobile Only**
 
 **pages**
 
